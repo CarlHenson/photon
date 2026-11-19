@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found – Photon</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #F6F4EF; color: #17191C; }
+    @media (prefers-color-scheme: dark) { body { background: #0F1214; color: #ECEAE4; } a { color: #3CC4D2 !important; } }
+    main { max-width: 32rem; }
+    p.k { font: 13px ui-monospace, Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; opacity: .65; margin: 0 0 16px; }
+    h1 { font-size: 2.4rem; letter-spacing: -.03em; line-height: 1.1; margin: 0 0 16px; }
+    a { color: #0A7A87; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="k">Error 404</p>
+    <h1>That page does not exist.</h1>
+    <p>The link may be old or mistyped. <a id="home" href="./">Go to the Photon homepage</a>.</p>
+  </main>
+  <script>
+    // Works on both a custom domain root and a /repo-name/ project path
+    (function () {
+      var parts = location.pathname.split('/').filter(Boolean);
+      var onProjectPath = location.hostname.slice(-10) === '.github.io' && parts.length > 0;
+      var base = onProjectPath ? '/' + parts[0] + '/' : '/';
+      document.getElementById('home').href = base;
+      var l = document.querySelector('link[rel=icon]'); l.href = base + 'assets/favicon.svg';
+    })();
+  </script>
+</body>
+</html>
